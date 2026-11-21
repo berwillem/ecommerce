@@ -1,0 +1,294 @@
+/* =============================================
+   NOT FOUND PAGE — Dynamic 404
+   Colors & Font from index.css
+   ============================================= */
+
+.not-found {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: var(--black-color);
+  text-align: center;
+  overflow: hidden;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* ---- Animated background blobs ---- */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  animation: blobFloat 8s ease-in-out infinite alternate;
+}
+
+.blob--1 {
+  width: 420px;
+  height: 420px;
+  background: var(--primary-color);
+  top: -120px;
+  left: -100px;
+  animation-duration: 9s;
+}
+
+.blob--2 {
+  width: 300px;
+  height: 300px;
+  background: var(--secondary-color);
+  bottom: -80px;
+  right: -80px;
+  animation-duration: 11s;
+  animation-delay: -3s;
+}
+
+.blob--3 {
+  width: 200px;
+  height: 200px;
+  background: var(--primary-color);
+  bottom: 20%;
+  left: 10%;
+  animation-duration: 7s;
+  animation-delay: -5s;
+}
+
+@keyframes blobFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(30px, -30px) scale(1.08); }
+  100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* ---- Content card ---- */
+.not-found__content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 42rem);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 1.5rem;
+  padding: 3rem 2.5rem;
+  backdrop-filter: blur(16px);
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Glitch 404 ---- */
+.not-found__glitch-wrapper {
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.not-found__glitch {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(5rem, 20vw, 10rem);
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: -0.02em;
+  animation: glitchPulse 3s infinite;
+}
+
+.not-found__glitch::before,
+.not-found__glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0.8;
+}
+
+.not-found__glitch::before {
+  color: var(--secondary-color);
+  animation: glitchTop 3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
+}
+
+.not-found__glitch::after {
+  color: var(--primary-color);
+  animation: glitchBottom 3s infinite;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchPulse {
+  0%, 90%, 100% { text-shadow: 0 0 20px rgba(245,158,11,0.5); }
+  92%           { text-shadow: 4px 0 0 var(--secondary-color), -4px 0 0 var(--primary-color); }
+}
+
+@keyframes glitchTop {
+  0%, 85%, 100% { transform: translate(0, 0); opacity: 0; }
+  86%           { transform: translate(-4px, -3px); opacity: 0.9; }
+  88%           { transform: translate(4px, -1px); opacity: 0.9; }
+  90%           { transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes glitchBottom {
+  0%, 85%, 100% { transform: translate(0, 0); opacity: 0; }
+  87%           { transform: translate(4px, 3px); opacity: 0.9; }
+  89%           { transform: translate(-4px, 1px); opacity: 0.9; }
+  91%           { transform: translate(0, 0); opacity: 0; }
+}
+
+/* ---- SVG Icon ---- */
+.not-found__icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.25rem;
+  animation: iconBounce 2.4s ease-in-out infinite;
+}
+
+.not-found__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ---- Title ---- */
+.not-found__title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  color: var(--white-color);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Message ---- */
+.not-found__message {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* ---- Animated dots ---- */
+.not-found__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation: dotBounce 1.4s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+  background: var(--secondary-color);
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: scale(1);   opacity: 0.5; }
+  40%            { transform: scale(1.5); opacity: 1; }
+}
+
+/* ---- Actions ---- */
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ---- Buttons ---- */
+.not-found__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.6rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.not-found__button:hover {
+  transform: translateY(-3px);
+}
+
+.not-found__button:active {
+  transform: translateY(0);
+}
+
+.not-found__button:focus-visible {
+  outline: 3px solid var(--white-color);
+  outline-offset: 3px;
+}
+
+/* Primary */
+.not-found__button--primary {
+  background: var(--primary-color);
+  color: var(--black-color);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+}
+
+.not-found__button--primary:hover {
+  background: #fbbf24;
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.55);
+}
+
+/* Secondary */
+.not-found__button--secondary {
+  background: transparent;
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15);
+}
+
+.not-found__button--secondary:hover {
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.35);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  .not-found__content {
+    padding: 2rem 1.25rem;
+  }
+
+  .not-found__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .not-found__button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  .not-found__content {
+    padding: 2rem 1.25rem;
+  }
+
+  .not-found__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .not-found__button {
+    width: 100%;
+    justify-content: center;
+  }
+}

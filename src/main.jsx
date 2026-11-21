@@ -7,6 +7,7 @@ import Notfound from "./pages/Notfound/Notfound";
 import Products from "./pages/Products/Products";
 import ShoppingCard from "./pages/ShoppingCard/ShoppingCard";
 import Thankyou from "./pages/Thankyou/Thankyou";
+import "./index.css";
 const router = createBrowserRouter([
   {
     path: "/",
